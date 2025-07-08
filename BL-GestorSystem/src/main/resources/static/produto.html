@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inova Solutions - Produtos Profissionais</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #121212;
+      --panel-color: #1f1f1f;
+      --input-color: #2a2a2a;
+      --text-color: #ffffff;
+      --border-color: #333;
+      --primary-color: #0078d7;
+      --accent-color: #00a4ef;
+      --button-hover: #005fa3;
+      --secondary-color: #292929;
+      --table-hover: #2e2e2e;
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: var(--panel-color);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      padding: 30px 20px;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .sidebar h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: var(--text-color);
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background var(--transition-speed);
+    }
+
+    .sidebar a:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .main {
+      flex: 1;
+      margin-left: 250px;
+      padding: 30px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 24px;
+      color: var(--primary-color);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      font-size: 26px;
+    }
+
+    .home-button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background var(--transition-speed);
+    }
+
+    .home-button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .panel {
+      background-color: var(--panel-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    .panel-title {
+      font-size: 22px;
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background-color: var(--input-color);
+      color: var(--text-color);
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background var(--transition-speed);
+      border: none;
+      margin-top: 25px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--button-hover);
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Estoque</a>
+    <a href="#">Produtos</a>
+    <a href="#">Categorias</a>
+    <a href="#">Fornecedores</a>
+    <a href="#">Relatórios</a>
+    <a href="#">Configurações</a>
+  </div>
+
+  <div class="main">
+    <header>
+      <div class="logo">
+        <i class="fas fa-boxes-stacked"></i>
+        Inova Solutions
+      </div>
+      <button class="home-button" onclick="window.location.href='home.html'">
+        <i class="fas fa-home"></i> Voltar para Home
+      </button>
+    </header>
+
+    <div class="panel">
+      <h2 class="panel-title">Cadastro de Produto Profissional</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="codigo">Código</label>
+          <input type="text" id="codigo" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="sku">SKU</label>
+          <input type="text" id="sku" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="barra">Código de Barras</label>
+          <input type="text" id="barra" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="ncm">NCM</label>
+          <input type="text" id="ncm" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+          <input type="text" id="categoria" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="marca">Marca</label>
+          <input type="text" id="marca" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="modelo">Modelo</label>
+          <input type="text" id="modelo" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="estoque">Estoque Atual</label>
+          <input type="number" id="estoque" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="estoqueMin">Estoque Mínimo</label>
+          <input type="number" id="estoqueMin" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="unidade">Unidade</label>
+          <input type="text" id="unidade" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="custo">Preço de Custo</label>
+          <input type="text" id="custo" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="venda">Preço de Venda</label>
+          <input type="text" id="venda" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="icms">ICMS (%)</label>
+          <input type="text" id="icms" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="ipi">IPI (%)</label>
+          <input type="text" id="ipi" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="fornecedor">Fornecedor</label>
+          <input type="text" id="fornecedor" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="validade">Validade</label>
+          <input type="date" id="validade" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="peso">Peso (kg)</label>
+          <input type="text" id="peso" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="dimensoes">Dimensões (LxAxP)</label>
+          <input type="text" id="dimensoes" class="form-control" placeholder="Ex: 20x30x10 cm">
+        </div>
+      </div>
+      <button class="btn btn-primary">Salvar Produto</button>
+    </div>
+  </div>
+</body>
+</html>

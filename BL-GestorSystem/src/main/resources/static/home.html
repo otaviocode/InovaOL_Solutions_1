@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inova Solutions - Sistema Profissional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f0f10;
+            --header-color: #1b1c1e;
+            --panel-color: #1f2022;
+            --text-color: #f0f0f0;
+            --primary-color: #0078d7;
+            --accent-color: #00a4ef;
+            --hover-color: #005fa3;
+            --border-color: #2f2f2f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .top-menu {
+            background-color: var(--header-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .menu-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .menu-nav a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .main {
+            padding: 60px 30px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--panel-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s;
+            text-align: center;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 120, 215, 0.2);
+        }
+
+        .card i {
+            font-size: 38px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <div class="logo">
+            <i class="fas fa-network-wired"></i> Inova Solutions
+        </div>
+        <nav class="menu-nav">
+            <a href="produto.html">Produtos</a>
+            <a href="estoque.html">Estoque</a>
+            <a href="usuarios.html">Usuários</a>
+            <a href="financeiro.html">Financeiro</a>
+            <a href="relatorios.html">Relatórios</a>
+            <a href="configuracoes.html">Configurações</a>
+            <a href="servicos.html">Sobre nós</a>
+            <a href="suporte.html">Suporte</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h1>Bem-vindo ao sistema da Inova Solutions</h1>
+        <p>Controle completo e moderno para sua empresa. Todos os recursos em um só lugar, com uma interface pensada para a melhor experiência.</p>
+
+        <div class="cards">
+            <a href="estoque.html" class="card">
+                <i class="fas fa-boxes"></i>
+                <h3>Estoque</h3>
+                <p>Controle de entradas, saídas e relatórios de produtos</p>
+            </a>
+            <a href="produto.html" class="card">
+                <i class="fas fa-tags"></i>
+                <h3>Produtos</h3>
+                <p>Catálogo, preços, descrições e gestão</p>
+            </a>
+            <a href="usuarios.html" class="card">
+                <i class="fas fa-users-cog"></i>
+                <h3>Usuários</h3>
+                <p>Permissões, cargos e gestão de acesso</p>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Inova Solutions - Todos os direitos reservados
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, i) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + i * 150);
+            });
+        });
+    </script>
+</body>
+</html>

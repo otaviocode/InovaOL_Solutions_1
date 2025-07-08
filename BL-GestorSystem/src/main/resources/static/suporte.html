@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inova Solutions - Suporte</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #121212;
+      --panel-color: #1e1e1e;
+      --input-color: #2d2d2d;
+      --text-color: #ffffff;
+      --border-color: #444;
+      --primary-color: #0078d7;
+      --button-hover: #005fa3;
+      --secondary-color: #3a3a3a;
+      --whatsapp-color: #25d366;
+      --radius: 10px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .home-button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .home-button:hover {
+      background-color: var(--button-hover);
+    }
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .panel {
+      background: var(--panel-color);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .support-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .whatsapp-btn {
+      background-color: var(--whatsapp-color);
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      border-radius: var(--radius);
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1ebe57;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: var(--input-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .file-input {
+      background: var(--input-color);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .btn-submit {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover {
+      background-color: var(--button-hover);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><i class="fas fa-headset"></i> Inova Solutions</div>
+    <button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para Home</button>
+  </header>
+
+  <main>
+    <div class="panel">
+      <h2>Central de Suporte</h2>
+      <p>Fale com nosso time via WhatsApp ou abra um chamado detalhado com arquivos, imagens ou vídeos. Atendimento 24/7 com prioridade máxima!</p>
+      <div class="support-buttons">
+        <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=5511994701139&text=Ol%C3%A1%20equipe%20da%20Inova%20Solutions%2C%20preciso%20de%20ajuda%20com%20o%20sistema!" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp Imediato
+        </a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Abrir Chamado Técnico</h2>
+      <form onsubmit="abrirChamado(event)" enctype="multipart/form-data">
+        <div class="form-grid">
+          <div>
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" required>
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+          </div>
+          <div>
+            <label for="modulo">Módulo</label>
+            <select id="modulo" required>
+              <option value="produtos">Produtos</option>
+              <option value="estoque">Estoque</option>
+              <option value="usuarios">Usuários</option>
+              <option value="financeiro">Financeiro</option>
+              <option value="relatorios">Relatórios</option>
+              <option value="configuracoes">Configurações</option>
+              <option value="servicos">Serviços</option>
+              <option value="suporte">Suporte</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label for="anexo">Anexar arquivos (opcional)</label>
+            <input type="file" id="anexo" class="file-input" multiple>
+          </div>
+        </div>
+        <label for="mensagem">Descreva com detalhes sua dúvida ou problema</label>
+        <textarea id="mensagem" required></textarea>
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar Chamado</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    function abrirChamado(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const modulo = document.getElementById('modulo').value;
+      const mensagem = document.getElementById('mensagem').value;
+      const arquivos = document.getElementById('anexo').files;
+
+      let arquivosInfo = "Nenhum anexo";
+      if (arquivos.length > 0) {
+        arquivosInfo = Array.from(arquivos).map(f => f.name).join(', ');
+      }
+
+      alert(`Chamado enviado com sucesso!\n\nNome: ${nome}\nEmail: ${email}\nMódulo: ${modulo}\nMensagem: ${mensagem}\nArquivos: ${arquivosInfo}`);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
