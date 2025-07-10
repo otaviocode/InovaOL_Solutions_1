@@ -1,554 +1,577 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Inova Solutions - Gestão de Usuários</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    :root {
-      --bg-color: #121212;
-      --panel-color: #1f1f1f;
-      --input-color: #2a2a2a;
-      --text-color: #fff;
-      --border-color: #333;
-      --primary-color: #0078d7;
-      --accent-color: #00a4ef;
-      --button-hover: #005fa3;
-      --secondary-color: #292929;
-      --table-hover: #2e2e2e;
-      --transition-speed: 0.3s;
-      --radius: 6px;
-    }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Inova Solutions - Gestão de Usuários</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<style>
+		:root {
+			--bg-color: #121212;
+			--panel-color: #1f1f1f;
+			--input-color: #2a2a2a;
+			--text-color: #fff;
+			--border-color: #333;
+			--primary-color: #0078d7;
+			--accent-color: #00a4ef;
+			--button-hover: #005fa3;
+			--secondary-color: #292929;
+			--table-hover: #2e2e2e;
+			--transition-speed: 0.3s;
+			--radius: 6px;
+		}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
 
-    body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
+		body {
+			background: var(--bg-color);
+			color: var(--text-color);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
+		}
 
-    header {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
+		header {
+			width: 100%;
+			max-width: 1200px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 25px;
+		}
 
-    .logo {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--primary-color);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+		.logo {
+			font-size: 26px;
+			font-weight: 700;
+			color: var(--primary-color);
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
 
-    .logo i {
-      font-size: 32px;
-    }
+		.logo i {
+			font-size: 32px;
+		}
 
-    button.home-button {
-      background-color: var(--primary-color);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-weight: 600;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background var(--transition-speed);
-    }
-    button.home-button:hover {
-      background-color: var(--button-hover);
-    }
+		button.home-button {
+			background-color: var(--primary-color);
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			font-weight: 600;
+			border-radius: var(--radius);
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			transition: background var(--transition-speed);
+		}
 
-    main {
-      width: 100%;
-      max-width: 1200px;
-      background: var(--panel-color);
-      border-radius: 10px;
-      padding: 25px 30px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.7);
-    }
+		button.home-button:hover {
+			background-color: var(--button-hover);
+		}
 
-    /* Abas */
-    .tabs {
-      display: flex;
-      border-bottom: 2px solid var(--border-color);
-      margin-bottom: 20px;
-      user-select: none;
-    }
-    .tab {
-      padding: 12px 25px;
-      cursor: pointer;
-      color: var(--secondary-color);
-      font-weight: 600;
-      border-bottom: 4px solid transparent;
-      transition: all var(--transition-speed);
-    }
-    .tab.active {
-      color: var(--primary-color);
-      border-bottom-color: var(--primary-color);
-    }
+		main {
+			width: 100%;
+			max-width: 1200px;
+			background: var(--panel-color);
+			border-radius: 10px;
+			padding: 25px 30px;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+		}
 
-    /* Formulário de cadastro */
-    form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px 40px;
-      margin-bottom: 40px;
-      align-items: center;
-    }
+		/* Abas */
+		.tabs {
+			display: flex;
+			border-bottom: 2px solid var(--border-color);
+			margin-bottom: 20px;
+			user-select: none;
+		}
 
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
+		.tab {
+			padding: 12px 25px;
+			cursor: pointer;
+			color: var(--secondary-color);
+			font-weight: 600;
+			border-bottom: 4px solid transparent;
+			transition: all var(--transition-speed);
+		}
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="file"],
-    input[type="tel"],
-    input[type="date"],
-    select {
-      width: 100%;
-      padding: 12px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      background-color: var(--input-color);
-      color: var(--text-color);
-      font-size: 14px;
-      transition: border-color var(--transition-speed);
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="password"]:focus,
-    input[type="file"]:focus,
-    input[type="tel"]:focus,
-    input[type="date"]:focus,
-    select:focus {
-      border-color: var(--primary-color);
-      outline: none;
-    }
+		.tab.active {
+			color: var(--primary-color);
+			border-bottom-color: var(--primary-color);
+		}
 
-    /* Foto do usuário */
-    .photo-preview {
-      grid-column: span 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    .photo-preview img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--primary-color);
-      background-color: #222;
-    }
-    .photo-preview input[type="file"] {
-      cursor: pointer;
-    }
+		/* Formulário de cadastro */
+		form {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 20px 40px;
+			margin-bottom: 40px;
+			align-items: center;
+		}
 
-    /* Botão salvar */
-    .btn-save {
-      grid-column: 1 / -1;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 14px 0;
-      font-weight: 700;
-      font-size: 16px;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: background var(--transition-speed);
-      user-select: none;
-    }
-    .btn-save:hover {
-      background-color: var(--button-hover);
-    }
+		label {
+			display: block;
+			margin-bottom: 6px;
+			font-weight: 600;
+		}
 
-    /* Pesquisa e tabela */
-    .search-filter {
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		input[type="file"],
+		input[type="tel"],
+		input[type="date"],
+		select {
+			width: 100%;
+			padding: 12px;
+			border-radius: var(--radius);
+			border: 1px solid var(--border-color);
+			background-color: var(--input-color);
+			color: var(--text-color);
+			font-size: 14px;
+			transition: border-color var(--transition-speed);
+		}
 
-    .search-filter input,
-    .search-filter select {
-      padding: 10px 12px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      background-color: var(--input-color);
-      color: var(--text-color);
-      font-size: 14px;
-      min-width: 200px;
-      max-width: 320px;
-      transition: border-color var(--transition-speed);
-    }
-    .search-filter input:focus,
-    .search-filter select:focus {
-      border-color: var(--primary-color);
-      outline: none;
-    }
+		input[type="text"]:focus,
+		input[type="email"]:focus,
+		input[type="password"]:focus,
+		input[type="file"]:focus,
+		input[type="tel"]:focus,
+		input[type="date"]:focus,
+		select:focus {
+			border-color: var(--primary-color);
+			outline: none;
+		}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: var(--panel-color);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
-    th, td {
-      padding: 14px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 14px;
-    }
-    th {
-      background-color: var(--secondary-color);
-      font-weight: 600;
-      user-select: none;
-    }
-    tbody tr:hover {
-      background-color: var(--table-hover);
-      cursor: pointer;
-    }
-    tbody tr.selected {
-      background-color: var(--primary-color);
-      color: white;
-    }
+		/* Foto do usuário */
+		.photo-preview {
+			grid-column: span 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+		}
 
-    /* Ações da tabela */
-    .actions {
-      margin-top: 15px;
-      display: flex;
-      gap: 12px;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-    .actions button {
-      background-color: var(--primary-color);
-      border: none;
-      color: white;
-      padding: 12px 22px;
-      font-weight: 600;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: background var(--transition-speed);
-      user-select: none;
-    }
-    .actions button:hover {
-      background-color: var(--button-hover);
-    }
+		.photo-preview img {
+			width: 140px;
+			height: 140px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 2px solid var(--primary-color);
+			background-color: #222;
+		}
 
-    @media (max-width: 800px) {
-      form {
-        grid-template-columns: 1fr !important;
-      }
-      .photo-preview {
-        grid-column: span 1 !important;
-        justify-content: start;
-      }
-      .search-filter {
-        justify-content: center;
-      }
-    }
-  </style>
+		.photo-preview input[type="file"] {
+			cursor: pointer;
+		}
+
+		/* Botão salvar */
+		.btn-save {
+			grid-column: 1 / -1;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			padding: 14px 0;
+			font-weight: 700;
+			font-size: 16px;
+			border-radius: var(--radius);
+			cursor: pointer;
+			transition: background var(--transition-speed);
+			user-select: none;
+		}
+
+		.btn-save:hover {
+			background-color: var(--button-hover);
+		}
+
+		/* Pesquisa e tabela */
+		.search-filter {
+			margin-bottom: 15px;
+			display: flex;
+			justify-content: flex-end;
+			gap: 15px;
+			flex-wrap: wrap;
+		}
+
+		.search-filter input,
+		.search-filter select {
+			padding: 10px 12px;
+			border-radius: var(--radius);
+			border: 1px solid var(--border-color);
+			background-color: var(--input-color);
+			color: var(--text-color);
+			font-size: 14px;
+			min-width: 200px;
+			max-width: 320px;
+			transition: border-color var(--transition-speed);
+		}
+
+		.search-filter input:focus,
+		.search-filter select:focus {
+			border-color: var(--primary-color);
+			outline: none;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			background-color: var(--panel-color);
+			border-radius: var(--radius);
+			overflow: hidden;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+		}
+
+		th,
+		td {
+			padding: 14px 20px;
+			text-align: left;
+			border-bottom: 1px solid var(--border-color);
+			font-size: 14px;
+		}
+
+		th {
+			background-color: var(--secondary-color);
+			font-weight: 600;
+			user-select: none;
+		}
+
+		tbody tr:hover {
+			background-color: var(--table-hover);
+			cursor: pointer;
+		}
+
+		tbody tr.selected {
+			background-color: var(--primary-color);
+			color: white;
+		}
+
+		/* Ações da tabela */
+		.actions {
+			margin-top: 15px;
+			display: flex;
+			gap: 12px;
+			justify-content: flex-end;
+			flex-wrap: wrap;
+		}
+
+		.actions button {
+			background-color: var(--primary-color);
+			border: none;
+			color: white;
+			padding: 12px 22px;
+			font-weight: 600;
+			border-radius: var(--radius);
+			cursor: pointer;
+			transition: background var(--transition-speed);
+			user-select: none;
+		}
+
+		.actions button:hover {
+			background-color: var(--button-hover);
+		}
+
+		@media (max-width: 800px) {
+			form {
+				grid-template-columns: 1fr !important;
+			}
+
+			.photo-preview {
+				grid-column: span 1 !important;
+				justify-content: start;
+			}
+
+			.search-filter {
+				justify-content: center;
+			}
+		}
+	</style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo"><i class="fas fa-users-cog"></i> Inova Solutions</div>
-  <button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para Home</button>
-</header>
+	<header>
+		<div class="logo"><i class="fas fa-users-cog"></i> Inova Solutions</div>
+		<button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para
+			Home</button>
+	</header>
 
-<main>
+	<main>
 
-  <nav class="tabs" aria-label="Filtro de Perfis">
-    <div class="tab active" data-profile="all" tabindex="0">Todos</div>
-    <div class="tab" data-profile="admin" tabindex="0">Administrador</div>
-    <div class="tab" data-profile="user" tabindex="0">Usuário Comum</div>
-  </nav>
+		<nav class="tabs" aria-label="Filtro de Perfis">
+			<div class="tab active" data-profile="all" tabindex="0">Todos</div>
+			<div class="tab" data-profile="admin" tabindex="0">Administrador</div>
+			<div class="tab" data-profile="user" tabindex="0">Usuário Comum</div>
+		</nav>
 
-  <form id="userForm" autocomplete="off" aria-label="Formulário de cadastro de usuários">
+		<form id="userForm" autocomplete="off" aria-label="Formulário de cadastro de usuários">
 
-    <div class="form-group">
-      <label for="codigo">Código (ID)</label>
-      <input type="text" id="codigo" readonly placeholder="Será gerado automaticamente" />
-    </div>
+			<div class="form-group">
+				<label for="codigo">Código (ID)</label>
+				<input type="text" id="codigo" readonly placeholder="Será gerado automaticamente" />
+			</div>
 
-    <div class="form-group photo-preview">
-      <label for="foto">Foto do Usuário</label>
-      <img src="https://via.placeholder.com/140?text=Foto" alt="Preview da Foto" id="fotoPreview" />
-      <input type="file" id="foto" accept="image/*" />
-    </div>
+			<div class="form-group photo-preview">
+				<label for="foto">Foto do Usuário</label>
+				<img src="https://via.placeholder.com/140?text=Foto" alt="Preview da Foto" id="fotoPreview" />
+				<input type="file" id="foto" accept="image/*" />
+			</div>
 
-    <div class="form-group">
-      <label for="nome">Nome Completo *</label>
-      <input type="text" id="nome" required placeholder="Nome do usuário" />
-    </div>
+			<div class="form-group">
+				<label for="nome">Nome Completo *</label>
+				<input type="text" id="nome" required placeholder="Nome do usuário" />
+			</div>
 
-    <div class="form-group">
-      <label for="email">E-mail *</label>
-      <input type="email" id="email" required placeholder="email@exemplo.com" />
-    </div>
+			<div class="form-group">
+				<label for="email">E-mail *</label>
+				<input type="email" id="email" required placeholder="email@exemplo.com" />
+			</div>
 
-    <div class="form-group">
-      <label for="login">Login *</label>
-      <input type="text" id="login" required placeholder="Login do usuário" />
-    </div>
+			<div class="form-group">
+				<label for="login">Login *</label>
+				<input type="text" id="login" required placeholder="Login do usuário" />
+			</div>
 
-    <div class="form-group">
-      <label for="senha">Senha *</label>
-      <input type="password" id="senha" required placeholder="Senha segura" />
-    </div>
+			<div class="form-group">
+				<label for="senha">Senha *</label>
+				<input type="password" id="senha" required placeholder="Senha segura" />
+			</div>
 
-    <div class="form-group">
-      <label for="perfil">Perfil *</label>
-      <select id="perfil" required>
-        <option value="" disabled selected>Selecione o perfil</option>
-        <option value="admin">Administrador</option>
-        <option value="user">Usuário Comum</option>
-      </select>
-    </div>
+			<div class="form-group">
+				<label for="perfil">Perfil *</label>
+				<select id="perfil" required>
+					<option value="" disabled selected>Selecione o perfil</option>
+					<option value="admin">Administrador</option>
+					<option value="user">Usuário Comum</option>
+				</select>
+			</div>
 
-    <div class="form-group">
-      <label for="status">Status *</label>
-      <select id="status" required>
-        <option value="ativo" selected>Ativo</option>
-        <option value="inativo">Inativo</option>
-      </select>
-    </div>
+			<div class="form-group">
+				<label for="status">Status *</label>
+				<select id="status" required>
+					<option value="ativo" selected>Ativo</option>
+					<option value="inativo">Inativo</option>
+				</select>
+			</div>
 
-    <div class="form-group">
-      <label for="telefone">Telefone</label>
-      <input type="tel" id="telefone" placeholder="(00) 00000-0000" pattern="\\(\\d{2}\\) \\d{4,5}-\\d{4}" />
-    </div>
+			<div class="form-group">
+				<label for="telefone">Telefone</label>
+				<input type="tel" id="telefone" placeholder="(00) 00000-0000" pattern="\(\d{2}\) \d{4,5}-\d{4}" />
 
-    <div class="form-group">
-      <label for="dataNascimento">Data de Nascimento</label>
-      <input type="date" id="dataNascimento" />
-    </div>
+			</div>
 
-    <div class="form-group">
-      <label for="cep">CEP</label>
-      <input type="text" id="cep" placeholder="00000-000" maxlength="9" pattern="\\d{5}-\\d{3}" />
-    </div>
+			<div class="form-group">
+				<label for="dataNascimento">Data de Nascimento</label>
+				<input type="date" id="dataNascimento" />
+			</div>
 
-    <div class="form-group">
-      <label for="endereco">Endereço</label>
-      <input type="text" id="endereco" placeholder="Rua, Avenida, etc." />
-    </div>
+			<div class="form-group">
+				<label for="cep">CEP</label>
+				<input type="text" id="cep" placeholder="00000-000" maxlength="9" pattern="\d{5}-\d{3}" />
 
-    <div class="form-group">
-      <label for="numero">Número</label>
-      <input type="text" id="numero" placeholder="Número" />
-    </div>
+			</div>
 
-    <div class="form-group">
-      <label for="complemento">Complemento</label>
-      <input type="text" id="complemento" placeholder="Apartamento, bloco, etc." />
-    </div>
+			<div class="form-group">
+				<label for="endereco">Endereço</label>
+				<input type="text" id="endereco" placeholder="Rua, Avenida, etc." />
+			</div>
 
-    <div class="form-group">
-      <label for="bairro">Bairro</label>
-      <input type="text" id="bairro" placeholder="Bairro" />
-    </div>
+			<div class="form-group">
+				<label for="numero">Número</label>
+				<input type="text" id="numero" placeholder="Número" />
+			</div>
 
-    <div class="form-group">
-      <label for="cidade">Cidade</label>
-      <input type="text" id="cidade" placeholder="Cidade" />
-    </div>
+			<div class="form-group">
+				<label for="complemento">Complemento</label>
+				<input type="text" id="complemento" placeholder="Apartamento, bloco, etc." />
+			</div>
 
-    <div class="form-group">
-      <label for="estado">Estado</label>
-      <input type="text" id="estado" placeholder="Estado" maxlength="2" />
-    </div>
+			<div class="form-group">
+				<label for="bairro">Bairro</label>
+				<input type="text" id="bairro" placeholder="Bairro" />
+			</div>
 
-    <button type="submit" class="btn-save" aria-label="Salvar usuário">Salvar Usuário</button>
-  </form>
+			<div class="form-group">
+				<label for="cidade">Cidade</label>
+				<input type="text" id="cidade" placeholder="Cidade" />
+			</div>
 
-  <section aria-label="Lista de usuários cadastrados">
+			<div class="form-group">
+				<label for="estado">Estado</label>
+				<input type="text" id="estado" placeholder="Estado" maxlength="2" />
+			</div>
 
-    <div class="search-filter" role="search">
-      <input type="text" id="searchInput" placeholder="Pesquisar usuários..." aria-label="Pesquisar usuários" />
-      <select id="filterPerfil" aria-label="Filtrar por perfil">
-        <option value="all" selected>Todos os perfis</option>
-        <option value="admin">Administrador</option>
-        <option value="user">Usuário Comum</option>
-      </select>
-      <select id="filterStatus" aria-label="Filtrar por status">
-        <option value="all" selected>Todos os status</option>
-        <option value="ativo">Ativo</option>
-        <option value="inativo">Inativo</option>
-      </select>
-    </div>
+			<button type="submit" class="btn-save" aria-label="Salvar usuário">Salvar Usuário</button>
+		</form>
 
-    <table role="grid" aria-describedby="userTableDesc" aria-live="polite">
-      <caption id="userTableDesc" class="sr-only">Tabela com usuários cadastrados</caption>
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Foto</th>
-          <th>Nome</th>
-          <th>E-mail</th>
-          <th>Login</th>
-          <th>Perfil</th>
-          <th>Status</th>
-          <th>Telefone</th>
-          <th>Data Nasc.</th>
-          <th>Cidade</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody id="userTableBody">
-        <!-- Usuários adicionados aqui dinamicamente -->
-      </tbody>
-    </table>
+		<section aria-label="Lista de usuários cadastrados">
 
-    <div class="actions" role="group" aria-label="Ações para usuários selecionados">
-      <button id="btnClear">Limpar Formulário</button>
-      <button id="btnDelete" disabled>Excluir Selecionado</button>
-      <button id="btnEdit" disabled>Editar Selecionado</button>
-    </div>
+			<div class="search-filter" role="search">
+				<input type="text" id="searchInput" placeholder="Pesquisar usuários..."
+					aria-label="Pesquisar usuários" />
+				<select id="filterPerfil" aria-label="Filtrar por perfil">
+					<option value="all" selected>Todos os perfis</option>
+					<option value="admin">Administrador</option>
+					<option value="user">Usuário Comum</option>
+				</select>
+				<select id="filterStatus" aria-label="Filtrar por status">
+					<option value="all" selected>Todos os status</option>
+					<option value="ativo">Ativo</option>
+					<option value="inativo">Inativo</option>
+				</select>
+			</div>
 
-  </section>
+			<table role="grid" aria-describedby="userTableDesc" aria-live="polite">
+				<caption id="userTableDesc" class="sr-only">Tabela com usuários cadastrados</caption>
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Foto</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>Login</th>
+						<th>Perfil</th>
+						<th>Status</th>
+						<th>Telefone</th>
+						<th>Data Nasc.</th>
+						<th>Cidade</th>
+						<th>Estado</th>
+					</tr>
+				</thead>
+				<tbody id="userTableBody">
+					<!-- Usuários adicionados aqui dinamicamente -->
+				</tbody>
+			</table>
 
-</main>
+			<div class="actions" role="group" aria-label="Ações para usuários selecionados">
+				<button id="btnClear">Limpar Formulário</button>
+				<button id="btnDelete" disabled>Excluir Selecionado</button>
+				<button id="btnEdit" disabled>Editar Selecionado</button>
+			</div>
 
-<script>
-  // Estado do app
-  let users = [];
-  let editUserId = null;
+		</section>
 
-  // Elementos
-  const form = document.getElementById('userForm');
-  const codigoInput = document.getElementById('codigo');
-  const fotoInput = document.getElementById('foto');
-  const fotoPreview = document.getElementById('fotoPreview');
-  const nomeInput = document.getElementById('nome');
-  const emailInput = document.getElementById('email');
-  const loginInput = document.getElementById('login');
-  const senhaInput = document.getElementById('senha');
-  const perfilSelect = document.getElementById('perfil');
-  const statusSelect = document.getElementById('status');
-  const telefoneInput = document.getElementById('telefone');
-  const dataNascimentoInput = document.getElementById('dataNascimento');
-  const cepInput = document.getElementById('cep');
-  const enderecoInput = document.getElementById('endereco');
-  const numeroInput = document.getElementById('numero');
-  const complementoInput = document.getElementById('complemento');
-  const bairroInput = document.getElementById('bairro');
-  const cidadeInput = document.getElementById('cidade');
-  const estadoInput = document.getElementById('estado');
+	</main>
 
-  const searchInput = document.getElementById('searchInput');
-  const filterPerfil = document.getElementById('filterPerfil');
-  const filterStatus = document.getElementById('filterStatus');
+	<script>
+		// Estado do app
+		let users = [];
+		let editUserId = null;
 
-  const userTableBody = document.getElementById('userTableBody');
-  const btnClear = document.getElementById('btnClear');
-  const btnDelete = document.getElementById('btnDelete');
-  const btnEdit = document.getElementById('btnEdit');
+		// Elementos
+		const form = document.getElementById('userForm');
+		const codigoInput = document.getElementById('codigo');
+		const fotoInput = document.getElementById('foto');
+		const fotoPreview = document.getElementById('fotoPreview');
+		const nomeInput = document.getElementById('nome');
+		const emailInput = document.getElementById('email');
+		const loginInput = document.getElementById('login');
+		const senhaInput = document.getElementById('senha');
+		const perfilSelect = document.getElementById('perfil');
+		const statusSelect = document.getElementById('status');
+		const telefoneInput = document.getElementById('telefone');
+		const dataNascimentoInput = document.getElementById('dataNascimento');
+		const cepInput = document.getElementById('cep');
+		const enderecoInput = document.getElementById('endereco');
+		const numeroInput = document.getElementById('numero');
+		const complementoInput = document.getElementById('complemento');
+		const bairroInput = document.getElementById('bairro');
+		const cidadeInput = document.getElementById('cidade');
+		const estadoInput = document.getElementById('estado');
 
-  const tabs = document.querySelectorAll('.tab');
+		const searchInput = document.getElementById('searchInput');
+		const filterPerfil = document.getElementById('filterPerfil');
+		const filterStatus = document.getElementById('filterStatus');
 
-  // Função para gerar ID único incremental
-  function generateId() {
-    return users.length ? Math.max(...users.map(u => u.id)) + 1 : 1;
-  }
+		const userTableBody = document.getElementById('userTableBody');
+		const btnClear = document.getElementById('btnClear');
+		const btnDelete = document.getElementById('btnDelete');
+		const btnEdit = document.getElementById('btnEdit');
 
-  // Atualiza preview da foto ao carregar arquivo
-  fotoInput.addEventListener('change', e => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-      fotoPreview.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
+		const tabs = document.querySelectorAll('.tab');
 
-  // Limpando formulário
-  function clearForm() {
-    editUserId = null;
-    codigoInput.value = '';
-    fotoPreview.src = "https://via.placeholder.com/140?text=Foto";
-    form.reset();
-    btnDelete.disabled = true;
-    btnEdit.disabled = true;
-    clearRowSelection();
-  }
+		// Função para gerar ID único incremental
+		function generateId() {
+			return users.length ? Math.max(...users.map(u => u.id)) + 1 : 1;
+		}
 
-  btnClear.addEventListener('click', e => {
-    e.preventDefault();
-    clearForm();
-  });
+		// Atualiza preview da foto ao carregar arquivo
+		fotoInput.addEventListener('change', e => {
+			const file = e.target.files[0];
+			if (!file) return;
+			const reader = new FileReader();
+			reader.onload = e => {
+				fotoPreview.src = e.target.result;
+			};
+			reader.readAsDataURL(file);
+		});
 
-  // Renderiza tabela baseado em filtro e pesquisa
-  function renderTable() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const perfilFilter = filterPerfil.value;
-    const statusFilter = filterStatus.value;
-    const tabPerfil = Array.from(tabs).find(t => t.classList.contains('active')).dataset.profile;
+		// Limpando formulário
+		function clearForm() {
+			editUserId = null;
+			codigoInput.value = '';
+			fotoPreview.src = "https://via.placeholder.com/140?text=Foto";
+			form.reset();
+			btnDelete.disabled = true;
+			btnEdit.disabled = true;
+			clearRowSelection();
+		}
 
-    userTableBody.innerHTML = '';
+		btnClear.addEventListener('click', e => {
+			e.preventDefault();
+			clearForm();
+		});
 
-    let filteredUsers = users.filter(user => {
-      // Filtra por aba
-      if (tabPerfil !== 'all' && user.perfil !== tabPerfil) return false;
-      // Filtra por pesquisa (nome, email, login)
-      if (
-        !user.nome.toLowerCase().includes(searchTerm) &&
-        !user.email.toLowerCase().includes(searchTerm) &&
-        !user.login.toLowerCase().includes(searchTerm)
-      ) return false;
-      // Filtra por filtro perfil abaixo tabela
-      if (perfilFilter !== 'all' && user.perfil !== perfilFilter) return false;
-      // Filtra por status
-      if (statusFilter !== 'all' && user.status !== statusFilter) return false;
-      return true;
-    });
+		// Renderiza tabela baseado em filtro e pesquisa
+		function renderTable() {
+			const searchTerm = searchInput.value.toLowerCase();
+			const perfilFilter = filterPerfil.value;
+			const statusFilter = filterStatus.value;
+			const tabPerfil = Array.from(tabs).find(t => t.classList.contains('active')).dataset.profile;
 
-    if (filteredUsers.length === 0) {
-      const tr = document.createElement('tr');
-      const td = document.createElement('td');
-      td.colSpan = 11;
-      td.style.textAlign = 'center';
-      td.textContent = 'Nenhum usuário encontrado.';
-      tr.appendChild(td);
-      userTableBody.appendChild(tr);
-      return;
-    }
+			userTableBody.innerHTML = '';
 
-    filteredUsers.forEach(user => {
-      const tr = document.createElement('tr');
-      tr.dataset.id = user.id;
+			let filteredUsers = users.filter(user => {
+				// Filtra por aba
+				if (tabPerfil !== 'all' && user.perfil !== tabPerfil) return false;
+				// Filtra por pesquisa (nome, email, login)
+				if (
+					!user.nome.toLowerCase().includes(searchTerm) &&
+					!user.email.toLowerCase().includes(searchTerm) &&
+					!user.login.toLowerCase().includes(searchTerm)
+				) return false;
+				// Filtra por filtro perfil abaixo tabela
+				if (perfilFilter !== 'all' && user.perfil !== perfilFilter) return false;
+				// Filtra por status
+				if (statusFilter !== 'all' && user.status !== statusFilter) return false;
+				return true;
+			});
 
-      tr.innerHTML = `
+			if (filteredUsers.length === 0) {
+				const tr = document.createElement('tr');
+				const td = document.createElement('td');
+				td.colSpan = 11;
+				td.style.textAlign = 'center';
+				td.textContent = 'Nenhum usuário encontrado.';
+				tr.appendChild(td);
+				userTableBody.appendChild(tr);
+				return;
+			}
+
+			filteredUsers.forEach(user => {
+				const tr = document.createElement('tr');
+				tr.dataset.id = user.id;
+
+				tr.innerHTML = `
         <td>${user.id}</td>
         <td><img src="${user.foto}" alt="Foto de ${user.nome}" style="width:40px; height:40px; border-radius:50%; object-fit:cover;" /></td>
         <td>${user.nome}</td>
@@ -561,161 +584,205 @@
         <td>${user.cidade || '-'}</td>
         <td>${user.estado || '-'}</td>
       `;
-      tr.addEventListener('click', () => {
-        clearRowSelection();
-        tr.classList.add('selected');
-        fillFormWithUser(user);
-        btnDelete.disabled = false;
-        btnEdit.disabled = false;
-      });
+				tr.addEventListener('click', () => {
+					clearRowSelection();
+					tr.classList.add('selected');
+					fillFormWithUser(user);
+					btnDelete.disabled = false;
+					btnEdit.disabled = false;
+				});
 
-      userTableBody.appendChild(tr);
-    });
-  }
+				userTableBody.appendChild(tr);
+			});
+		}
 
-  // Limpa seleção de linha
-  function clearRowSelection() {
-    userTableBody.querySelectorAll('tr').forEach(tr => tr.classList.remove('selected'));
-  }
+		// Limpa seleção de linha
+		function clearRowSelection() {
+			userTableBody.querySelectorAll('tr').forEach(tr => tr.classList.remove('selected'));
+		}
 
-  // Preenche o formulário com os dados do usuário para edição
-  function fillFormWithUser(user) {
-    editUserId = user.id;
-    codigoInput.value = user.id;
-    fotoPreview.src = user.foto || "https://via.placeholder.com/140?text=Foto";
-    nomeInput.value = user.nome;
-    emailInput.value = user.email;
-    loginInput.value = user.login;
-    senhaInput.value = ''; // por segurança, não preencher senha
-    perfilSelect.value = user.perfil;
-    statusSelect.value = user.status;
-    telefoneInput.value = user.telefone || '';
-    dataNascimentoInput.value = user.dataNascimento || '';
-    cepInput.value = user.cep || '';
-    enderecoInput.value = user.endereco || '';
-    numeroInput.value = user.numero || '';
-    complementoInput.value = user.complemento || '';
-    bairroInput.value = user.bairro || '';
-    cidadeInput.value = user.cidade || '';
-    estadoInput.value = user.estado || '';
-  }
+		// Preenche o formulário com os dados do usuário para edição
+		function fillFormWithUser(user) {
+			editUserId = user.id;
+			codigoInput.value = user.id;
+			fotoPreview.src = user.foto || "https://via.placeholder.com/140?text=Foto";
+			nomeInput.value = user.nome;
+			emailInput.value = user.email;
+			loginInput.value = user.login;
+			senhaInput.value = ''; // por segurança, não preencher senha
+			perfilSelect.value = user.perfil;
+			statusSelect.value = user.status;
+			telefoneInput.value = user.telefone || '';
+			dataNascimentoInput.value = user.dataNascimento || '';
+			cepInput.value = user.cep || '';
+			enderecoInput.value = user.endereco || '';
+			numeroInput.value = user.numero || '';
+			complementoInput.value = user.complemento || '';
+			bairroInput.value = user.bairro || '';
+			cidadeInput.value = user.cidade || '';
+			estadoInput.value = user.estado || '';
+		}
 
-  // Validação básica do formulário
-  function validateForm() {
-    if (!nomeInput.value.trim()) { alert('Nome é obrigatório'); nomeInput.focus(); return false; }
-    if (!emailInput.value.trim()) { alert('E-mail é obrigatório'); emailInput.focus(); return false; }
-    if (!loginInput.value.trim()) { alert('Login é obrigatório'); loginInput.focus(); return false; }
-    if (!editUserId && !senhaInput.value.trim()) { alert('Senha é obrigatória'); senhaInput.focus(); return false; }
-    if (!perfilSelect.value) { alert('Perfil deve ser selecionado'); perfilSelect.focus(); return false; }
-    if (!statusSelect.value) { alert('Status deve ser selecionado'); statusSelect.focus(); return false; }
-    return true;
-  }
+		// Validação básica do formulário
+		function validateForm() {
+			if (!nomeInput.value.trim()) {alert('Nome é obrigatório'); nomeInput.focus(); return false;}
+			if (!emailInput.value.trim()) {alert('E-mail é obrigatório'); emailInput.focus(); return false;}
+			if (!loginInput.value.trim()) {alert('Login é obrigatório'); loginInput.focus(); return false;}
+			if (!editUserId && !senhaInput.value.trim()) {alert('Senha é obrigatória'); senhaInput.focus(); return false;}
+			if (!perfilSelect.value) {alert('Perfil deve ser selecionado'); perfilSelect.focus(); return false;}
+			if (!statusSelect.value) {alert('Status deve ser selecionado'); statusSelect.focus(); return false;}
+			return true;
+		}
 
-  // Envio do formulário (novo ou edição)
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    if (!validateForm()) return;
+		// Envio do formulário (novo ou edição)
+		form.addEventListener('submit', e => {
+			e.preventDefault();
+			if (!validateForm()) return;
 
-    let fotoData = fotoPreview.src;
-    // Se nova foto foi selecionada, reader já atualizou a preview.
+			let fotoData = fotoPreview.src;
+			// Se nova foto foi selecionada, reader já atualizou a preview.
 
-    if (editUserId === null) {
-      // Novo usuário
-      const newUser = {
-        id: generateId(),
-        foto: fotoData,
-        nome: nomeInput.value.trim(),
-        email: emailInput.value.trim(),
-        login: loginInput.value.trim(),
-        senha: senhaInput.value, // normalmente deve ser hash, aqui só para exemplo
-        perfil: perfilSelect.value,
-        status: statusSelect.value,
-        telefone: telefoneInput.value.trim(),
-        dataNascimento: dataNascimentoInput.value,
-        cep: cepInput.value.trim(),
-        endereco: enderecoInput.value.trim(),
-        numero: numeroInput.value.trim(),
-        complemento: complementoInput.value.trim(),
-        bairro: bairroInput.value.trim(),
-        cidade: cidadeInput.value.trim(),
-        estado: estadoInput.value.trim().toUpperCase(),
-      };
-      users.push(newUser);
-      alert('Usuário cadastrado com sucesso!');
-    } else {
-      // Editar usuário existente
-      const userIndex = users.findIndex(u => u.id === editUserId);
-      if (userIndex === -1) {
-        alert('Usuário não encontrado!');
-        clearForm();
-        return;
-      }
-      users[userIndex] = {
-        ...users[userIndex],
-        foto: fotoData,
-        nome: nomeInput.value.trim(),
-        email: emailInput.value.trim(),
-        login: loginInput.value.trim(),
-        senha: senhaInput.value ? senhaInput.value : users[userIndex].senha, // atualiza senha só se preenchida
-        perfil: perfilSelect.value,
-        status: statusSelect.value,
-        telefone: telefoneInput.value.trim(),
-        dataNascimento: dataNascimentoInput.value,
-        cep: cepInput.value.trim(),
-        endereco: enderecoInput.value.trim(),
-        numero: numeroInput.value.trim(),
-        complemento: complementoInput.value.trim(),
-        bairro: bairroInput.value.trim(),
-        cidade: cidadeInput.value.trim(),
-        estado: estadoInput.value.trim().toUpperCase(),
-      };
-      alert('Usuário atualizado com sucesso!');
-    }
-    clearForm();
-    renderTable();
-  });
+			if (editUserId === null) {
+				// Novo usuário
+				const newUser = {
+					id: generateId(),
+					foto: fotoData,
+					nome: nomeInput.value.trim(),
+					email: emailInput.value.trim(),
+					login: loginInput.value.trim(),
+					senha: senhaInput.value, // normalmente deve ser hash, aqui só para exemplo
+					perfil: perfilSelect.value,
+					status: statusSelect.value,
+					telefone: telefoneInput.value.trim(),
+					dataNascimento: dataNascimentoInput.value,
+					cep: cepInput.value.trim(),
+					endereco: enderecoInput.value.trim(),
+					numero: numeroInput.value.trim(),
+					complemento: complementoInput.value.trim(),
+					bairro: bairroInput.value.trim(),
+					cidade: cidadeInput.value.trim(),
+					estado: estadoInput.value.trim().toUpperCase(),
+				};
+				/* users.push(newUser);
+				 alert('Usuário cadastrado com sucesso!'); */
 
-  // Filtrar tabela conforme pesquisa e filtros
-  searchInput.addEventListener('input', renderTable);
-  filterPerfil.addEventListener('change', renderTable);
-  filterStatus.addEventListener('change', renderTable);
+				<!-------------------------------------------------------------->
 
-  // Filtrar por abas (perfil)
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      renderTable();
-    });
-    tab.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        tab.click();
-      }
-    });
-  });
+				fetch("http://localhost:8080/usuarios", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						nome: nomeInput.value.trim(),
+						email: emailInput.value.trim(),
+						login: loginInput.value.trim(),
+						senha: senhaInput.value,
+						perfil: perfilSelect.value,
+						status: statusSelect.value,
+						telefone: telefoneInput.value.trim(),
+						dataNascimento: dataNascimentoInput.value,
+						cep: cepInput.value.trim(),
+						endereco: enderecoInput.value.trim(),
+						numero: numeroInput.value.trim(),
+						complemento: complementoInput.value.trim(),
+						bairro: bairroInput.value.trim(),
+						cidade: cidadeInput.value.trim(),
+						estado: estadoInput.value.trim().toUpperCase(),
+						foto: fotoPreview.src // cuidado: isso é base64! precisa tratar no backend
+					})
+				})
+					.then(res => {
+						if (!res.ok) throw new Error("Erro ao salvar");
+						return res.json();
+					})
+					.then(data => {
+						alert("Usuário salvo com sucesso!");
+						clearForm();
+						// Aqui você pode também atualizar a tabela chamando renderTable se quiser
+					})
+					.catch(err => {
+						console.error("Erro:", err);
+						alert("Erro ao salvar usuário");
+					});
 
-  // Excluir usuário selecionado
-  btnDelete.addEventListener('click', () => {
-    if(editUserId === null) return alert('Selecione um usuário para excluir.');
-    if(confirm('Confirma a exclusão do usuário selecionado?')) {
-      users = users.filter(u => u.id !== editUserId);
-      alert('Usuário excluído com sucesso.');
-      clearForm();
-      renderTable();
-    }
-  });
+				//------------------------------------------------------------------
 
-  // Editar usuário selecionado (popula formulário, já feito no clique na tabela)
-  btnEdit.addEventListener('click', () => {
-    if(editUserId === null) return alert('Selecione um usuário para editar.');
-    window.scrollTo({top:0, behavior: 'smooth'});
-  });
+			} else {
+				// Editar usuário existente
+				const userIndex = users.findIndex(u => u.id === editUserId);
+				if (userIndex === -1) {
+					alert('Usuário não encontrado!');
+					clearForm();
+					return;
+				}
+				users[userIndex] = {
+					...users[userIndex],
+					foto: fotoData,
+					nome: nomeInput.value.trim(),
+					email: emailInput.value.trim(),
+					login: loginInput.value.trim(),
+					senha: senhaInput.value ? senhaInput.value : users[userIndex].senha, // atualiza senha só se preenchida
+					perfil: perfilSelect.value,
+					status: statusSelect.value,
+					telefone: telefoneInput.value.trim(),
+					dataNascimento: dataNascimentoInput.value,
+					cep: cepInput.value.trim(),
+					endereco: enderecoInput.value.trim(),
+					numero: numeroInput.value.trim(),
+					complemento: complementoInput.value.trim(),
+					bairro: bairroInput.value.trim(),
+					cidade: cidadeInput.value.trim(),
+					estado: estadoInput.value.trim().toUpperCase(),
+				};
+				alert('Usuário atualizado com sucesso!');
+			}
+			clearForm();
+			renderTable();
+		});
 
-  // Inicialização
-  clearForm();
-  renderTable();
-</script>
+		// Filtrar tabela conforme pesquisa e filtros
+		searchInput.addEventListener('input', renderTable);
+		filterPerfil.addEventListener('change', renderTable);
+		filterStatus.addEventListener('change', renderTable);
+
+		// Filtrar por abas (perfil)
+		tabs.forEach(tab => {
+			tab.addEventListener('click', () => {
+				tabs.forEach(t => t.classList.remove('active'));
+				tab.classList.add('active');
+				renderTable();
+			});
+			tab.addEventListener('keydown', e => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					tab.click();
+				}
+			});
+		});
+
+		// Excluir usuário selecionado
+		btnDelete.addEventListener('click', () => {
+			if (editUserId === null) return alert('Selecione um usuário para excluir.');
+			if (confirm('Confirma a exclusão do usuário selecionado?')) {
+				users = users.filter(u => u.id !== editUserId);
+				alert('Usuário excluído com sucesso.');
+				clearForm();
+				renderTable();
+			}
+		});
+
+		// Editar usuário selecionado (popula formulário, já feito no clique na tabela)
+		btnEdit.addEventListener('click', () => {
+			if (editUserId === null) return alert('Selecione um usuário para editar.');
+			window.scrollTo({top: 0, behavior: 'smooth'});
+		});
+
+		// Inicialização
+		clearForm();
+		renderTable();
+	</script>
 
 </body>
+
 </html>
