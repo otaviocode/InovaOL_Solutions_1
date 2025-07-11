@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +36,20 @@
       justify-content: center;
       padding: 20px;
     }
+
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+
+
+
 
     .login-container {
       background-color: var(--panel-color);
@@ -158,7 +173,9 @@
     }
   </style>
 </head>
+
 <body>
+  <div class="background-animation"></div>
   <div class="login-container">
     <h1 class="login-title"><i class="fas fa-fingerprint"></i> Acesso Restrito</h1>
 
@@ -223,6 +240,39 @@
         setTimeout(() => (alertBox.style.display = 'none'), 3000);
       }
     });
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const bgAnim = document.querySelector('.background-animation');
+      let targetX = 100; // start center-ish
+      let targetY = 100;
+      let currentX = 100;
+      let currentY = 100;
+
+      document.addEventListener('mousemove', e => {
+        targetX = (e.clientX / window.innerWidth) * 200;
+        targetY = (e.clientY / window.innerHeight) * 200;
+      });
+
+      function animate() {
+        // Smoothly move currentX/Y towards targetX/Y (adjust 0.1 for speed: lower = slower)
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+
+        bgAnim.style.background = `radial-gradient(circle at ${currentX}% ${currentY}%, #0078d7 0%, #00a4ef 50%, #0f0f10 90%)`;
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    });
+
+
+
+
+
   </script>
 </body>
+
 </html>
