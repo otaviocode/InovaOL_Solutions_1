@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inova Solutions - Estoque</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f0f10;
+            --header-color: #1b1c1e;
+            --panel-color: #1f2022;
+            --text-color: #f0f0f0;
+            --primary-color: #0078d7;
+            --accent-color: #00a4ef;
+            --hover-color: #005fa3;
+            --border-color: #2f2f2f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: var(--header-color);
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s ease;
+            padding: 20px;
+            border-right: 1px solid var(--border-color);
+            z-index: 5;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 10px 0;
+        }
+
+        .top-menu {
+            background-color: var(--header-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .top-actions a, .top-actions .toggle-sidebar {
+            font-size: 16px;
+            padding: 8px 12px;
+            background: var(--panel-color);
+            border-radius: 5px;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: background 0.3s;
+        }
+
+        .top-actions a:hover, .top-actions .toggle-sidebar:hover {
+            background-color: var(--primary-color);
+        }
+
+        .main {
+            margin-left: 0;
+            padding: 30px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar.open ~ .main {
+            margin-left: 250px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: var(--panel-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .section {
+            background: var(--panel-color);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            background: #2b2b2c;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 5px;
+            color: var(--text-color);
+            width: 100%;
+            min-width: 180px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--hover-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--header-color);
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .summary-card {
+            background: var(--panel-color);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .summary-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .summary-card p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2><i class="fas fa-box"></i> Estoque</h2>
+        <a href="#">Visão Geral</a>
+        <a href="#">Entrada</a>
+        <a href="#">Saída</a>
+        <a href="#">Transferências</a>
+        <a href="#">Inventário</a>
+        <a href="relatorios.html">Relatórios</a>
+    </div>
+
+    <div class="top-menu">
+        <div class="logo">
+            <i class="fas fa-network-wired"></i> Inova Solutions
+        </div>
+        <div class="top-actions">
+            <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            <div class="toggle-sidebar" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('saida')">Movimentação de Saída</button>
+            <button class="tab-btn" onclick="showTab('entrada')">Movimentação de Entrada</button>
+            <button class="tab-btn" onclick="showTab('relatorio')">Relatórios</button>
+        </div>
+
+        <div id="saida" class="section tab-content">
+            <h2>Saída de Estoque</h2>
+            <div class="form-group">
+                <div><label>Data Inicial</label><input type="date" class="form-control"></div>
+                <div><label>Data Final</label><input type="date" class="form-control"></div>
+                <div><label>Produto / Código</label><input type="text" class="form-control"></div>
+                <div><label>Tipo de Saída</label>
+                    <select class="form-control">
+                        <option>Venda</option>
+                        <option>Consumo Interno</option>
+                        <option>Devolução</option>
+                        <option>Avaria</option>
+                    </select>
+                </div>
+                <div><label>Responsável</label><input type="text" class="form-control"></div>
+            </div>
+            <button class="btn">Filtrar</button>
+            <table>
+                <thead>
+                    <tr><th>Data</th><th>Produto</th><th>Quantidade</th><th>Tipo</th><th>Estoque Antes</th><th>Estoque Depois</th><th>Armazém</th><th>Responsável</th><th>Observações</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>07/07/2025</td><td>Teclado Gamer</td><td>10</td><td>Venda</td><td>50</td><td>40</td><td>Central</td><td>Otávio</td><td>Pedido #1587</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="entrada" class="section tab-content" style="display: none;">
+            <h2>Entrada de Estoque</h2>
+            <div class="form-group">
+                <div><label>Data</label><input type="date" class="form-control"></div>
+                <div><label>Produto / Código</label><input type="text" class="form-control"></div>
+                <div><label>Quantidade</label><input type="number" class="form-control"></div>
+                <div><label>Tipo de Entrada</label>
+                    <select class="form-control">
+                        <option>Compra</option>
+                        <option>Devolução de Cliente</option>
+                        <option>Ajuste Manual</option>
+                    </select>
+                </div>
+                <div><label>Responsável</label><input type="text" class="form-control"></div>
+            </div>
+            <button class="btn">Registrar Entrada</button>
+        </div>
+
+        <div id="relatorio" class="section tab-content" style="display: none;">
+            <h2>Relatórios de Estoque</h2>
+            <div class="form-group">
+                <div><label>Data Inicial</label><input type="date" class="form-control"></div>
+                <div><label>Data Final</label><input type="date" class="form-control"></div>
+                <div><label>Tipo de Relatório</label>
+                    <select class="form-control">
+                        <option>Saídas</option>
+                        <option>Entradas</option>
+                        <option>Produtos Críticos</option>
+                        <option>Estoque Atual</option>
+                    </select>
+                </div>
+                <div><label>Produto / Código (opcional)</label><input type="text" class="form-control"></div>
+            </div>
+            <button class="btn">Gerar Relatório</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.querySelector('.main').classList.toggle('sidebar-open');
+        }
+
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            contents.forEach(el => el.style.display = 'none');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
