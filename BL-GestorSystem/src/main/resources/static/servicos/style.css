@@ -1,0 +1,97 @@
+:root {
+    --bg-color: #121212;
+    --panel-color: #1e1e1e;
+    --input-color: #2d2d2d;
+    --text-color: #ffffff;
+    --border-color: #444;
+    --primary-color: #0078d7;
+    --accent-color: #00a4ef;
+    --button-hover: #005fa3;
+    --secondary-color: #3a3a3a;
+    --table-hover: #2a2a2a;
+    --radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: var(--button-hover);
+}
+
+section#aboutMe {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    background: var(--panel-color);
+    border-radius: var(--radius);
+    padding: 30px 40px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+section#aboutMe h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+section#aboutMe .links a {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+section#aboutMe .links a:hover {
+    background: var(--button-hover);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
