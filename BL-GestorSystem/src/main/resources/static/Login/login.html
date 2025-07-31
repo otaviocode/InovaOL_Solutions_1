@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inova Solutions - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1 class="login-title"><i class="fas fa-fingerprint"></i> Acesso Restrito</h1>
+
+    <div id="alertBox" class="alert" role="alert"></div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Usuário <span style="color: red">*</span></label>
+        <input type="text" id="username" placeholder="Digite seu usuário" required autofocus />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha <span style="color: red">*</span></label>
+        <input type="password" id="password" placeholder="Digite sua senha" required />
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-secondary" id="btnExit">
+          <i class="fas fa-times-circle"></i> Sair
+        </button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-sign-in-alt"></i> Entrar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

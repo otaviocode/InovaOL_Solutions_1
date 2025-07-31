@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inova Solutions - Configurações do Sistema</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"><i class="fas fa-cogs"></i> Inova Solutions</div>
+  <button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para Home</button>
+</header>
+
+<main aria-label="Configurações do Sistema">
+
+  <h1>Configurações do Sistema</h1>
+
+  <form id="settingsForm" autocomplete="off" aria-describedby="formInstructions">
+
+    <p id="formInstructions" style="margin-bottom:30px; color:#888; user-select:none;">
+      Ajuste aqui as principais configurações do sistema para personalizar o funcionamento, aparência e segurança.
+    </p>
+
+    <div class="settings-grid">
+
+      <!-- Configurações Gerais -->
+      <section class="settings-panel" aria-labelledby="generalSettingsTitle">
+        <h2 id="generalSettingsTitle">Configurações Gerais</h2>
+
+        <label for="systemName">Nome do Sistema
+          <span class="tooltip" data-tip="Nome exibido no cabeçalho e e-mails.">?</span>
+        </label>
+        <input type="text" id="systemName" placeholder="Inova Solutions" required />
+
+        <label for="defaultLanguage">Idioma Padrão</label>
+        <select id="defaultLanguage" required>
+          <option value="pt-BR" selected>Português (Brasil)</option>
+          <option value="en-US">Inglês (Estados Unidos)</option>
+          <option value="es-ES">Espanhol</option>
+        </select>
+
+        <label for="timezone">Fuso Horário</label>
+        <select id="timezone" required>
+          <option value="America/Sao_Paulo" selected>GMT-3 - São Paulo</option>
+          <option value="America/New_York">GMT-5 - Nova York</option>
+          <option value="Europe/Lisbon">GMT+0 - Lisboa</option>
+          <option value="Asia/Tokyo">GMT+9 - Tóquio</option>
+        </select>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="maintenanceMode" />
+          <label for="maintenanceMode">Ativar modo de manutenção</label>
+          <span class="tooltip" data-tip="Sistema ficará indisponível para usuários não-administradores.">?</span>
+        </div>
+      </section>
+
+      <!-- Configurações de Segurança -->
+      <section class="settings-panel" aria-labelledby="securitySettingsTitle">
+        <h2 id="securitySettingsTitle">Configurações de Segurança</h2>
+
+        <label for="passwordMinLength">Tamanho mínimo da senha</label>
+        <input type="text" id="passwordMinLength" value="8" pattern="\d+" title="Digite apenas números" required />
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="requireSpecialChars" />
+          <label for="requireSpecialChars">Exigir caracteres especiais na senha</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="requireNumbers" />
+          <label for="requireNumbers">Exigir números na senha</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="requireUppercase" />
+          <label for="requireUppercase">Exigir letras maiúsculas na senha</label>
+        </div>
+
+        <label for="sessionTimeout">Tempo de sessão (minutos)</label>
+        <input type="text" id="sessionTimeout" value="30" pattern="\d+" title="Digite apenas números" required />
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="enable2FA" />
+          <label for="enable2FA">Ativar autenticação em dois fatores (2FA)</label>
+        </div>
+      </section>
+
+      <!-- Configurações de E-mail -->
+      <section class="settings-panel" aria-labelledby="emailSettingsTitle">
+        <h2 id="emailSettingsTitle">Configurações de E-mail</h2>
+
+        <label for="smtpServer">Servidor SMTP</label>
+        <input type="text" id="smtpServer" placeholder="smtp.exemplo.com" required />
+
+        <label for="smtpPort">Porta SMTP</label>
+        <input type="text" id="smtpPort" value="587" pattern="\d+" title="Digite apenas números" required />
+
+        <label for="smtpUser">Usuário SMTP</label>
+        <input type="text" id="smtpUser" placeholder="usuario@exemplo.com" required />
+
+        <label for="smtpPassword">Senha SMTP</label>
+        <input type="password" id="smtpPassword" placeholder="********" required />
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="smtpSSL" />
+          <label for="smtpSSL">Usar SSL/TLS</label>
+        </div>
+      </section>
+
+      <!-- Configurações Visuais -->
+      <section class="settings-panel" aria-labelledby="uiSettingsTitle">
+        <h2 id="uiSettingsTitle">Configurações Visuais</h2>
+
+        <label for="themeSelection">Tema do Sistema</label>
+        <select id="themeSelection" required>
+          <option value="dark" selected>Escuro</option>
+          <option value="light">Claro</option>
+          <option value="auto">Automático (baseado no sistema)</option>
+        </select>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="showTooltips" checked />
+          <label for="showTooltips">Exibir dicas de ferramenta (tooltips)</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="enableAnimations" checked />
+          <label for="enableAnimations">Ativar animações suaves</label>
+        </div>
+      </section>
+
+      <!-- Configurações de Backup e Logs -->
+      <section class="settings-panel" aria-labelledby="backupSettingsTitle">
+        <h2 id="backupSettingsTitle">Backup e Logs</h2>
+
+        <label for="backupFrequency">Frequência do backup automático</label>
+        <select id="backupFrequency" required>
+          <option value="daily" selected>Diário</option>
+          <option value="weekly">Semanal</option>
+          <option value="monthly">Mensal</option>
+          <option value="manual">Manual</option>
+        </select>
+
+        <label for="logLevel">Nível de log do sistema</label>
+        <select id="logLevel" required>
+          <option value="error">Erro</option>
+          <option value="warning">Aviso</option>
+          <option value="info" selected>Informação</option>
+          <option value="debug">Depuração</option>
+        </select>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="enableLogRotation" checked />
+          <label for="enableLogRotation">Ativar rotação automática de logs</label>
+        </div>
+
+        <label for="backupPath">Caminho para backups</label>
+        <input type="text" id="backupPath" placeholder="/var/backups/inova" />
+      </section>
+
+      <!-- Configurações de Integrações -->
+      <section class="settings-panel" aria-labelledby="integrationSettingsTitle">
+        <h2 id="integrationSettingsTitle">Integrações</h2>
+
+        <label for="apiKey">Chave API</label>
+        <input type="text" id="apiKey" placeholder="Sua chave API aqui" />
+
+        <label for="webhookUrl">URL do Webhook</label>
+        <input type="text" id="webhookUrl" placeholder="https://seuservidor.com/webhook" />
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="enableThirdParty" />
+          <label for="enableThirdParty">Ativar integrações com terceiros</label>
+        </div>
+      </section>
+
+    </div>
+
+    <button type="submit" class="btn-save" aria-label="Salvar configurações">Salvar Configurações</button>
+    <div class="message" role="alert" aria-live="assertive">Configurações salvas com sucesso!</div>
+
+  </form>
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

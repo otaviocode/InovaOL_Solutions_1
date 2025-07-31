@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inova Solutions - Relatórios</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><i class="fas fa-chart-line"></i> Inova Solutions</div>
+    <button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para Home</button>
+  </header>
+
+  <main>
+    <div class="panel">
+      <h2>Relatórios Gerais do Sistema</h2>
+      <div class="form-grid">
+        <div>
+          <label for="modulo">Módulo</label>
+          <select id="modulo">
+            <option value="produtos">Produtos</option>
+            <option value="estoque">Estoque</option>
+            <option value="usuarios">Usuários</option>
+            <option value="financeiro">Financeiro</option>
+            <option value="servicos">Serviços</option>
+            <option value="configuracoes">Configurações</option>
+          </select>
+        </div>
+        <div>
+          <label for="dataInicio">Data Início</label>
+          <input type="date" id="dataInicio">
+        </div>
+        <div>
+          <label for="dataFim">Data Fim</label>
+          <input type="date" id="dataFim">
+        </div>
+        <div>
+          <label for="palavraChave">Palavra-chave</label>
+          <input type="text" id="palavraChave" placeholder="Buscar por termo...">
+        </div>
+      </div>
+      <button class="btn" onclick="gerarRelatorio()">Gerar Relatório</button>
+    </div>
+
+    <div class="panel">
+      <h2>Resultado</h2>
+      <table id="tabelaRelatorio">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Preenchido dinamicamente -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

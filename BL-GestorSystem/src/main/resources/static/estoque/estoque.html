@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inova Solutions - Estoque</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2><i class="fas fa-box"></i> Estoque</h2>
+        <a href="#">Visão Geral</a>
+        <a href="#">Entrada</a>
+        <a href="#">Saída</a>
+        <a href="#">Transferências</a>
+        <a href="#">Inventário</a>
+        <a href="relatorios.html">Relatórios</a>
+    </div>
+
+    <div class="top-menu">
+        <div class="logo">
+            <i class="fas fa-network-wired"></i> Inova Solutions
+        </div>
+        <div class="top-actions">
+            <a href="home.html"><i class="fas fa-home"></i> Home</a>
+            <div class="toggle-sidebar" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('saida')">Movimentação de Saída</button>
+            <button class="tab-btn" onclick="showTab('entrada')">Movimentação de Entrada</button>
+            <button class="tab-btn" onclick="showTab('relatorio')">Relatórios</button>
+        </div>
+
+        <div id="saida" class="section tab-content">
+            <h2>Saída de Estoque</h2>
+            <div class="form-group">
+                <div><label>Data Inicial</label><input type="date" class="form-control"></div>
+                <div><label>Data Final</label><input type="date" class="form-control"></div>
+                <div><label>Produto / Código</label><input type="text" class="form-control"></div>
+                <div><label>Tipo de Saída</label>
+                    <select class="form-control">
+                        <option>Venda</option>
+                        <option>Consumo Interno</option>
+                        <option>Devolução</option>
+                        <option>Avaria</option>
+                    </select>
+                </div>
+                <div><label>Responsável</label><input type="text" class="form-control"></div>
+            </div>
+            <button class="btn">Filtrar</button>
+            <table>
+                <thead>
+                    <tr><th>Data</th><th>Produto</th><th>Quantidade</th><th>Tipo</th><th>Estoque Antes</th><th>Estoque Depois</th><th>Armazém</th><th>Responsável</th><th>Observações</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>07/07/2025</td><td>Teclado Gamer</td><td>10</td><td>Venda</td><td>50</td><td>40</td><td>Central</td><td>Otávio</td><td>Pedido #1587</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="entrada" class="section tab-content" style="display: none;">
+            <h2>Entrada de Estoque</h2>
+            <div class="form-group">
+                <div><label>Data</label><input type="date" class="form-control"></div>
+                <div><label>Produto / Código</label><input type="text" class="form-control"></div>
+                <div><label>Quantidade</label><input type="number" class="form-control"></div>
+                <div><label>Tipo de Entrada</label>
+                    <select class="form-control">
+                        <option>Compra</option>
+                        <option>Devolução de Cliente</option>
+                        <option>Ajuste Manual</option>
+                    </select>
+                </div>
+                <div><label>Responsável</label><input type="text" class="form-control"></div>
+            </div>
+            <button class="btn">Registrar Entrada</button>
+        </div>
+
+        <div id="relatorio" class="section tab-content" style="display: none;">
+            <h2>Relatórios de Estoque</h2>
+            <div class="form-group">
+                <div><label>Data Inicial</label><input type="date" class="form-control"></div>
+                <div><label>Data Final</label><input type="date" class="form-control"></div>
+                <div><label>Tipo de Relatório</label>
+                    <select class="form-control">
+                        <option>Saídas</option>
+                        <option>Entradas</option>
+                        <option>Produtos Críticos</option>
+                        <option>Estoque Atual</option>
+                    </select>
+                </div>
+                <div><label>Produto / Código (opcional)</label><input type="text" class="form-control"></div>
+            </div>
+            <button class="btn">Gerar Relatório</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

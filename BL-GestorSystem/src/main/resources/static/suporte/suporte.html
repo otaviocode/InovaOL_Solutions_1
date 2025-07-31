@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inova Solutions - Suporte</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><i class="fas fa-headset"></i> Inova Solutions</div>
+    <button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para Home</button>
+  </header>
+
+  <main>
+    <div class="panel">
+      <h2>Central de Suporte</h2>
+      <p>Fale com nosso time via WhatsApp ou abra um chamado detalhado com arquivos, imagens ou vídeos. Atendimento 24/7 com prioridade máxima!</p>
+      <div class="support-buttons">
+        <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=5511994701139&text=Ol%C3%A1%20equipe%20da%20Inova%20Solutions%2C%20preciso%20de%20ajuda%20com%20o%20sistema!" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp Imediato
+        </a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Abrir Chamado Técnico</h2>
+      <form onsubmit="abrirChamado(event)" enctype="multipart/form-data">
+        <div class="form-grid">
+          <div>
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" required>
+          </div>
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" required>
+          </div>
+          <div>
+            <label for="modulo">Módulo</label>
+            <select id="modulo" required>
+              <option value="produtos">Produtos</option>
+              <option value="estoque">Estoque</option>
+              <option value="usuarios">Usuários</option>
+              <option value="financeiro">Financeiro</option>
+              <option value="relatorios">Relatórios</option>
+              <option value="configuracoes">Configurações</option>
+              <option value="servicos">Serviços</option>
+              <option value="suporte">Suporte</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label for="anexo">Anexar arquivos (opcional)</label>
+            <input type="file" id="anexo" class="file-input" multiple>
+          </div>
+        </div>
+        <label for="mensagem">Descreva com detalhes sua dúvida ou problema</label>
+        <textarea id="mensagem" required></textarea>
+        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar Chamado</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

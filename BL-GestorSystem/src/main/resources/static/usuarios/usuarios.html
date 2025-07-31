@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Inova Solutions - Gestão de Usuários</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<header>
+		<div class="logo"><i class="fas fa-users-cog"></i> Inova Solutions</div>
+		<button class="home-button" onclick="window.location.href='home.html'"><i class="fas fa-home"></i> Voltar para
+			Home</button>
+	</header>
+
+	<main>
+
+		<nav class="tabs" aria-label="Filtro de Perfis">
+			<div class="tab active" data-profile="all" tabindex="0">Todos</div>
+			<div class="tab" data-profile="admin" tabindex="0">Administrador</div>
+			<div class="tab" data-profile="user" tabindex="0">Usuário Comum</div>
+		</nav>
+
+		<form id="userForm" autocomplete="off" aria-label="Formulário de cadastro de usuários">
+
+			<div class="form-group">
+				<label for="codigo">Código (ID)</label>
+				<input type="text" id="codigo" readonly placeholder="Será gerado automaticamente" />
+			</div>
+
+			<div class="form-group photo-preview">
+				<label for="foto">Foto do Usuário</label>
+				<img src="https://via.placeholder.com/140?text=Foto" alt="Preview da Foto" id="fotoPreview" />
+				<input type="file" id="foto" accept="image/*" />
+			</div>
+
+			<div class="form-group">
+				<label for="nome">Nome Completo *</label>
+				<input type="text" id="nome" required placeholder="Nome do usuário" />
+			</div>
+
+			<div class="form-group">
+				<label for="email">E-mail *</label>
+				<input type="email" id="email" required placeholder="email@exemplo.com" />
+			</div>
+
+			<div class="form-group">
+				<label for="login">Login *</label>
+				<input type="text" id="login" required placeholder="Login do usuário" />
+			</div>
+
+			<div class="form-group">
+				<label for="senha">Senha *</label>
+				<input type="password" id="senha" required placeholder="Senha segura" />
+			</div>
+
+			<div class="form-group">
+				<label for="perfil">Perfil *</label>
+				<select id="perfil" required>
+					<option value="" disabled selected>Selecione o perfil</option>
+					<option value="admin">Administrador</option>
+					<option value="user">Usuário Comum</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="status">Status *</label>
+				<select id="status" required>
+					<option value="ativo" selected>Ativo</option>
+					<option value="inativo">Inativo</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="telefone">Telefone</label>
+				<input type="tel" id="telefone" placeholder="(00) 00000-0000" pattern="\(\d{2}\) \d{4,5}-\d{4}" />
+
+			</div>
+
+			<div class="form-group">
+				<label for="dataNascimento">Data de Nascimento</label>
+				<input type="date" id="dataNascimento" />
+			</div>
+
+			<div class="form-group">
+				<label for="cep">CEP</label>
+				<input type="text" id="cep" placeholder="00000-000" maxlength="9" pattern="\d{5}-\d{3}" />
+
+			</div>
+
+			<div class="form-group">
+				<label for="endereco">Endereço</label>
+				<input type="text" id="endereco" placeholder="Rua, Avenida, etc." />
+			</div>
+
+			<div class="form-group">
+				<label for="numero">Número</label>
+				<input type="text" id="numero" placeholder="Número" />
+			</div>
+
+			<div class="form-group">
+				<label for="complemento">Complemento</label>
+				<input type="text" id="complemento" placeholder="Apartamento, bloco, etc." />
+			</div>
+
+			<div class="form-group">
+				<label for="bairro">Bairro</label>
+				<input type="text" id="bairro" placeholder="Bairro" />
+			</div>
+
+			<div class="form-group">
+				<label for="cidade">Cidade</label>
+				<input type="text" id="cidade" placeholder="Cidade" />
+			</div>
+
+			<div class="form-group">
+				<label for="estado">Estado</label>
+				<input type="text" id="estado" placeholder="Estado" maxlength="2" />
+			</div>
+
+			<button type="submit" class="btn-save" aria-label="Salvar usuário">Salvar Usuário</button>
+		</form>
+
+		<section aria-label="Lista de usuários cadastrados">
+
+			<div class="search-filter" role="search">
+				<input type="text" id="searchInput" placeholder="Pesquisar usuários..."
+					aria-label="Pesquisar usuários" />
+				<select id="filterPerfil" aria-label="Filtrar por perfil">
+					<option value="all" selected>Todos os perfis</option>
+					<option value="admin">Administrador</option>
+					<option value="user">Usuário Comum</option>
+				</select>
+				<select id="filterStatus" aria-label="Filtrar por status">
+					<option value="all" selected>Todos os status</option>
+					<option value="ativo">Ativo</option>
+					<option value="inativo">Inativo</option>
+				</select>
+			</div>
+
+			<table role="grid" aria-describedby="userTableDesc" aria-live="polite">
+				<caption id="userTableDesc" class="sr-only">Tabela com usuários cadastrados</caption>
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Foto</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>Login</th>
+						<th>Perfil</th>
+						<th>Status</th>
+						<th>Telefone</th>
+						<th>Data Nasc.</th>
+						<th>Cidade</th>
+						<th>Estado</th>
+					</tr>
+				</thead>
+				<tbody id="userTableBody">
+					<!-- Usuários adicionados aqui dinamicamente -->
+				</tbody>
+			</table>
+
+			<div class="actions" role="group" aria-label="Ações para usuários selecionados">
+				<button id="btnClear">Limpar Formulário</button>
+				<button id="btnDelete" disabled>Excluir Selecionado</button>
+				<button id="btnEdit" disabled>Editar Selecionado</button>
+			</div>
+
+		</section>
+
+	</main>
+
+	<script src="script.js"></script>
+
+</body>
+
+</html>

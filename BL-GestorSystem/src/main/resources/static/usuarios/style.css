@@ -1,0 +1,287 @@
+:root {
+    --bg-color: #121212;
+    --panel-color: #1f1f1f;
+    --input-color: #2a2a2a;
+    --text-color: #fff;
+    --border-color: #333;
+    --primary-color: #0078d7;
+    --accent-color: #00a4ef;
+    --button-hover: #005fa3;
+    --secondary-color: #292929;
+    --table-hover: #2e2e2e;
+    --transition-speed: 0.3s;
+    --radius: 6px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 32px;
+}
+
+button.home-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background var(--transition-speed);
+}
+
+button.home-button:hover {
+    background-color: var(--button-hover);
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    background: var(--panel-color);
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Abas */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.tab {
+    padding: 12px 25px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    font-weight: 600;
+    border-bottom: 4px solid transparent;
+    transition: all var(--transition-speed);
+}
+
+.tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Formulário de cadastro */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px 40px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--input-color);
+    color: var(--text-color);
+    font-size: 14px;
+    transition: border-color var(--transition-speed);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Foto do usuário */
+.photo-preview {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.photo-preview img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    background-color: #222;
+}
+
+.photo-preview input[type="file"] {
+    cursor: pointer;
+}
+
+/* Botão salvar */
+.btn-save {
+    grid-column: 1 / -1;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px 0;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background var(--transition-speed);
+    user-select: none;
+}
+
+.btn-save:hover {
+    background-color: var(--button-hover);
+}
+
+/* Pesquisa e tabela */
+.search-filter {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--input-color);
+    color: var(--text-color);
+    font-size: 14px;
+    min-width: 200px;
+    max-width: 320px;
+    transition: border-color var(--transition-speed);
+}
+
+.search-filter input:focus,
+.search-filter select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--panel-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+th,
+td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+}
+
+th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    user-select: none;
+}
+
+tbody tr:hover {
+    background-color: var(--table-hover);
+    cursor: pointer;
+}
+
+tbody tr.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Ações da tabela */
+.actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background var(--transition-speed);
+    user-select: none;
+}
+
+.actions button:hover {
+    background-color: var(--button-hover);
+}
+
+@media (max-width: 800px) {
+    form {
+        grid-template-columns: 1fr !important;
+    }
+
+    .photo-preview {
+        grid-column: span 1 !important;
+        justify-content: start;
+    }
+
+    .search-filter {
+        justify-content: center;
+    }
+}
